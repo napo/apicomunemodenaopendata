@@ -2,7 +2,7 @@ name: Scrape
 
 on:
   schedule:
-    - cron: "0 4 * * *"
+    - cron: "5 * * * *"
   workflow_dispatch:
 
 env:
@@ -20,9 +20,9 @@ jobs:
         with:
           python-version: '3.7'
       - name: Install requirements
-        run: pip install -r requirements.txt
+        run: pip install -r scripts/requirements.txt
       - name: Run Scraper
-        run: python eventi.py
+        run: python scripts/eventi.py
       - name: Set env vars
         run: |
           echo "DATE=$(python -c 'import datetime as dt; print(dt.datetime.now().date())')" >> $GITHUB_ENV
