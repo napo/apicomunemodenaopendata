@@ -327,7 +327,7 @@ events["prezzo"] = events['prezzo'].str.lstrip("\n")
 # In[48]:
 
 
-events.to_csv("eventi_modena.csv",sep=";",index=False)
+events.to_csv("../docs/eventi/eventi_modena.csv",sep=";",index=False)
 
 
 # In[49]:
@@ -340,5 +340,5 @@ events.latitudine = events.latitudine.apply(lambda x: str(x).replace(".",","))
 # In[50]:
 
 
-events.to_csv("eventi_modena_coordinate_con_virgola.csv",sep=";",index=False)
+events.to_csv("../docs/eventi/eventi_modena_coordinate_con_virgola.csv",sep=";",index=False)
 
