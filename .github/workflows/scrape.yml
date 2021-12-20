@@ -22,7 +22,7 @@ jobs:
       - name: Install requirements
         run: pip install -r scripts/requirements.txt
       - name: Run Scraper
-        run: python scripts/eventi.py
+        run: python scripts/scrape.py
       - name: Commit and push if it changed
         run: |-
           git config user.name "napo"

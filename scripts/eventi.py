@@ -1,23 +1,7 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
-
 import pandas as pd
 import requests
 headers = {'Accept': 'application/json', 'Content-Type': 'application/json'}
-
-
-# In[2]:
-
-
 url="https://www.comune.modena.it/api/@querystring-search"
-
-
-# In[3]:
-
-
 subdata = {"i":"portal_type","o":"plone.app.querystring.operation.selection.any","v":["Event"]}
 subdata_2 = {"i":"start","o":"plone.app.querystring.operation.date.largerThan","v":"2021-12-20 00:00"}
 d = [subdata,subdata_2]
