@@ -1,0 +1,108 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+
+<style type="text/css">
+
+        #mynetwork {
+            width: 100%;
+            height: 100%;
+            background-color: #222222;
+            border: 1px solid lightgray;
+            position: relative;
+            float: left;
+        }
+
+        
+
+        
+
+        
+</style>
+
+</head>
+
+<body>
+<div id = "mynetwork"></div>
+
+
+<script type="text/javascript">
+
+    // initialize global variables.
+    var edges;
+    var nodes;
+    var network; 
+    var container;
+    var options, data;
+
+    
+    // This method is responsible for drawing the graph, returns the drawn network
+    function drawGraph() {
+        var container = document.getElementById('mynetwork');
+        
+        
+
+        // parsing and collecting nodes and edges from the python
+        nodes = new vis.DataSet([{"font": {"color": "white"}, "id": 0, "label": "Ufficio amministrativo pianificazione", "shape": "dot"}, {"font": {"color": "white"}, "id": 1, "label": "Servizio progetti urbani complessi e politiche abitative", "shape": "dot"}, {"font": {"color": "white"}, "id": 2, "label": "Ufficio Mobilit\u00e0, traffico, urbanizzazioni", "shape": "dot"}, {"font": {"color": "white"}, "id": 3, "label": "Servizio pianificazione ambientale", "shape": "dot"}, {"font": {"color": "white"}, "id": 4, "label": "Ufficio PUG", "shape": "dot"}, {"font": {"color": "white"}, "id": 5, "label": "Settore Ambiente, edilizia privata e attivit\u00e0 produttive", "shape": "dot"}, {"font": {"color": "white"}, "id": 6, "label": "Servizio Ambiente", "shape": "dot"}, {"font": {"color": "white"}, "id": 7, "label": "Ufficio amministrativo ambiente", "shape": "dot"}, {"font": {"color": "white"}, "id": 8, "label": "Servizio trasformazioni edilizie e attivit\u00e0 produttive", "shape": "dot"}, {"font": {"color": "white"}, "id": 9, "label": "Polizia locale, sicurezza urbana e Protezione civile", "shape": "dot"}, {"font": {"color": "white"}, "id": 10, "label": "Ufficio Presidio del territorio", "shape": "dot"}, {"font": {"color": "white"}, "id": 11, "label": "Servizio amministrativo e protezione civile", "shape": "dot"}, {"font": {"color": "white"}, "id": 12, "label": "Ufficio Impatto Ambientale", "shape": "dot"}, {"font": {"color": "white"}, "id": 13, "label": "Settore Risorse finanziarie e patrimoniali", "shape": "dot"}, {"font": {"color": "white"}, "id": 14, "label": "Ufficio Bilancio e investimenti", "shape": "dot"}, {"font": {"color": "white"}, "id": 15, "label": "Servizio Finanze, economato e organismi partecipati", "shape": "dot"}, {"font": {"color": "white"}, "id": 16, "label": "Ufficio Economato", "shape": "dot"}, {"font": {"color": "white"}, "id": 17, "label": "Ufficio Entrate e spese", "shape": "dot"}, {"font": {"color": "white"}, "id": 18, "label": "Ufficio Investimenti e contabilit\u00e0 economico patrimoniale", "shape": "dot"}, {"font": {"color": "white"}, "id": 19, "label": "Servizio Patrimonio e tributi", "shape": "dot"}, {"font": {"color": "white"}, "id": 20, "label": "Settore Risorse Umane e affari istituzionali", "shape": "dot"}, {"font": {"color": "white"}, "id": 21, "label": "Settore Lavori pubblici e manutenzione della citt\u00e0", "shape": "dot"}, {"font": {"color": "white"}, "id": 22, "label": "Settore Pianificazione e sostenibilit\u00e0 urbana", "shape": "dot"}, {"font": {"color": "white"}, "id": 23, "label": "Ufficio Stipendi e previdenza", "shape": "dot"}, {"font": {"color": "white"}, "id": 24, "label": "Ufficio amministrazione del personale e bilancio", "shape": "dot"}, {"font": {"color": "white"}, "id": 25, "label": "Servizio Segreteria generale", "shape": "dot"}, {"font": {"color": "white"}, "id": 26, "label": "Settore Servizi sociali, sanitari e per l\u2019integrazione", "shape": "dot"}, {"font": {"color": "white"}, "id": 27, "label": "Servizio Sociale territoriale", "shape": "dot"}, {"font": {"color": "white"}, "id": 28, "label": "Ufficio Progetti innovativi in ambito sociale", "shape": "dot"}, {"font": {"color": "white"}, "id": 29, "label": "Servizio gestione servizi diretti e indiretti", "shape": "dot"}, {"font": {"color": "white"}, "id": 30, "label": "Ufficio Casa e rapporti col Servizio sociale terriotoriale", "shape": "dot"}, {"font": {"color": "white"}, "id": 31, "label": "Ufficio Polo sociale 1", "shape": "dot"}, {"font": {"color": "white"}, "id": 32, "label": "Ufficio Polo sociale 2 e casa della salute", "shape": "dot"}, {"font": {"color": "white"}, "id": 33, "label": "Ufficio Polo sociale 3 e sportelli specialistici", "shape": "dot"}, {"font": {"color": "white"}, "id": 34, "label": "Settore Cultura, sport, giovani e promozione della citt\u00e0", "shape": "dot"}, {"font": {"color": "white"}, "id": 35, "label": "Ufficio Biblioteche e archivio storico", "shape": "dot"}, {"font": {"color": "white"}, "id": 36, "label": "Ufficio Musei Civici", "shape": "dot"}, {"font": {"color": "white"}, "id": 37, "label": "Ufficio Sport e giovani", "shape": "dot"}, {"font": {"color": "white"}, "id": 38, "label": "Servizio promozione della citt\u00e0 e turismo", "shape": "dot"}, {"font": {"color": "white"}, "id": 39, "label": "Ufficio Ricerche e Documentazione sulla Storia Urbana", "shape": "dot"}, {"font": {"color": "white"}, "id": 40, "label": "Archivio storico ", "shape": "dot"}, {"font": {"color": "white"}, "id": 41, "label": "Servizio manutenzione straordinaria e verde pubblico", "shape": "dot"}, {"font": {"color": "white"}, "id": 42, "label": "Servizio  opere pubbliche, edilizia storica", "shape": "dot"}, {"font": {"color": "white"}, "id": 43, "label": "Ufficio amministrativo lavori pubblici", "shape": "dot"}, {"font": {"color": "white"}, "id": 44, "label": "Servizio prevenzione e protezione", "shape": "dot"}, {"font": {"color": "white"}, "id": 45, "label": "Ufficio manutenzione ordinaria", "shape": "dot"}, {"font": {"color": "white"}, "id": 46, "label": "Ufficio Sviluppo organizzativo, programmazione e controlli, citt\u00e0 universitaria", "shape": "dot"}, {"font": {"color": "white"}, "id": 47, "label": "Ufficio Progetti europei, relazioni internazionali e coordinamento progetti complessi", "shape": "dot"}, {"font": {"color": "white"}, "id": 48, "label": "Ufficio Segreteria del Sindaco e cerimoniale", "shape": "dot"}, {"font": {"color": "white"}, "id": 49, "label": "Direzione Generale", "shape": "dot"}, {"font": {"color": "white"}, "id": 50, "label": "Ufficio stampa", "shape": "dot"}, {"font": {"color": "white"}, "id": 51, "label": "Segretario Generale", "shape": "dot"}, {"font": {"color": "white"}, "id": 52, "label": "Ufficio Consulenza e Contenzioso", "shape": "dot"}, {"font": {"color": "white"}, "id": 53, "label": "Avvocatura civica", "shape": "dot"}, {"font": {"color": "white"}, "id": 54, "label": "Gabinetto del Sindaco", "shape": "dot"}, {"font": {"color": "white"}, "id": 55, "label": "Ufficio amministrativo legalit\u00e0 e sicurezze", "shape": "dot"}, {"font": {"color": "white"}, "id": 56, "label": "Settore Smart City, servizi demografici e partecipazione", "shape": "dot"}, {"font": {"color": "white"}, "id": 57, "label": "Ufficio Statistica", "shape": "dot"}, {"font": {"color": "white"}, "id": 58, "label": "Servizi demografici", "shape": "dot"}, {"font": {"color": "white"}, "id": 59, "label": "Ufficio Comunicazione e partecipazione", "shape": "dot"}, {"font": {"color": "white"}, "id": 60, "label": "Ufficio Reti informatiche", "shape": "dot"}, {"font": {"color": "white"}, "id": 61, "label": "Archivio di deposito", "shape": "dot"}, {"font": {"color": "white"}, "id": 62, "label": "Ufficio agenda digitale", "shape": "dot"}, {"font": {"color": "white"}, "id": 63, "label": "Servizio sistema educativo-scolastico", "shape": "dot"}, {"font": {"color": "white"}, "id": 64, "label": "Servizio 0-6 anni e centro Memo", "shape": "dot"}, {"font": {"color": "white"}, "id": 65, "label": "Ufficio appalti e acquisizioni di servizi", "shape": "dot"}, {"font": {"color": "white"}, "id": 66, "label": "Ufficio Servizi per le scuole", "shape": "dot"}, {"font": {"color": "white"}, "id": 67, "label": "Ufficio servizi educativi e scuole d\u0027infanzia", "shape": "dot"}, {"font": {"color": "white"}, "id": 68, "label": "Servizio pianificazione  ambientale", "shape": "dot"}, {"font": {"color": "white"}, "id": 69, "label": "Settore Servizi Educativi e pari opportunit\u00e0", "shape": "dot"}, {"font": {"color": "white"}, "id": 70, "label": "Ufficio Gestione Strumenti Urbanistici Vigenti", "shape": "dot"}]);
+        edges = new vis.DataSet([{"from": 5, "to": 6}, {"from": 5, "to": 8}, {"from": 5, "to": 12}, {"from": 5, "to": 68}, {"from": 9, "to": 10}, {"from": 9, "to": 11}, {"from": 13, "to": 14}, {"from": 13, "to": 15}, {"from": 13, "to": 16}, {"from": 13, "to": 17}, {"from": 13, "to": 18}, {"from": 13, "to": 19}, {"from": 20, "to": 23}, {"from": 20, "to": 24}, {"from": 20, "to": 25}, {"from": 21, "to": 41}, {"from": 21, "to": 42}, {"from": 21, "to": 43}, {"from": 21, "to": 44}, {"from": 21, "to": 45}, {"from": 22, "to": 0}, {"from": 22, "to": 1}, {"from": 22, "to": 2}, {"from": 22, "to": 3}, {"from": 22, "to": 4}, {"from": 22, "to": 70}, {"from": 22, "to": 68}, {"from": 26, "to": 27}, {"from": 26, "to": 28}, {"from": 26, "to": 29}, {"from": 26, "to": 30}, {"from": 26, "to": 31}, {"from": 26, "to": 32}, {"from": 26, "to": 33}, {"from": 34, "to": 35}, {"from": 34, "to": 36}, {"from": 34, "to": 37}, {"from": 34, "to": 38}, {"from": 34, "to": 39}, {"from": 34, "to": 40}, {"from": 49, "to": 46}, {"from": 49, "to": 47}, {"from": 49, "to": 48}, {"from": 49, "to": 55}, {"from": 49, "to": 54}, {"from": 53, "to": 52}, {"from": 56, "to": 57}, {"from": 56, "to": 58}, {"from": 56, "to": 59}, {"from": 56, "to": 60}, {"from": 56, "to": 61}, {"from": 56, "to": 62}, {"from": 69, "to": 63}, {"from": 69, "to": 64}, {"from": 69, "to": 65}, {"from": 69, "to": 66}, {"from": 69, "to": 67}]);
+
+        // adding nodes and edges to the graph
+        data = {nodes: nodes, edges: edges};
+
+        var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": false,
+            "type": "continuous"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+        
+        
+
+        
+
+        network = new vis.Network(container, data, options);
+	 
+        
+
+
+        
+
+        return network;
+
+    }
+
+    drawGraph();
+
+</script>
+</body>
+</html>
