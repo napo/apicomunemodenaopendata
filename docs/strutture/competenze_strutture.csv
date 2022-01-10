@@ -194,7 +194,7 @@ Settore Risorse Umane e affari istituzionali;Presidio e coordinamento di: pianif
 Settore Risorse Umane e affari istituzionali;Presidio delle relazioni sindacali in raccordo con la Direzione Generale.
 Settore Risorse Umane e affari istituzionali;Coordinamento delle attività afferenti alla Segreteria Generale
 Settore Lavori pubblici e manutenzione della città;Valutazione tecnico/economica e studi di fattibilità ai fini della formazione del Piano degli Investimenti e delle Opere Pubbliche.
-Settore Lavori pubblici e manutenzione della città;Responsabilità del procedimento, progettazione e attuazione di opere pubbliche di interesse generale.
+Settore Lavori pubblici e manutenzione della città;Responsabilità del procedimento,  progettazione e attuazione di opere pubbliche di interesse generale.
 Settore Lavori pubblici e manutenzione della città;Coordinamento degli interventi di ristrutturazione, recupero, riqualificazione, restauro e adeguamento tecnico-normativo sul patrimonio edilizio di interesse generale.
 Settore Lavori pubblici e manutenzione della città;Coordinamento della manutenzione ordinaria e straordinaria del patrimonio edilizio comunale, dell’edilizia storica, sociale, residenziale, sportiva, scolastica.
 Settore Lavori pubblici e manutenzione della città;Coordinamento della manutenzione ordinaria e straordinaria delle strade, delle infrastrutture stradali e della segnaletica (ponti, cavalcavia, cavalcaferrovia, ecc.).
@@ -207,7 +207,7 @@ Settore Lavori pubblici e manutenzione della città;Coordinamento delle attivit�
 Settore Lavori pubblici e manutenzione della città;Coordinamento tecnico e gestione operativa delle attività di facchinaggio, delle attività del magazzino economato, delle attività di controllo e distribuzione del vestiario relativo al personale di tutto l'ente, ad esclusione del personale della Polizia Locale, e monitoraggio del fabbisogno.
 Settore Lavori pubblici e manutenzione della città;Coordinamento delle attività di supporto all’Ufficio Rappresentanza per le funzioni di competenza per allestimenti e vestiario in occasione di manifestazioni ed eventi.
 Settore Lavori pubblici e manutenzione della città;Coordinamento delle attività di distribuzione delle forniture e degli arredi agli uffici del Comune.
-Settore Lavori pubblici e manutenzione della città;Attività connesse al ruolo di Datore di lavoro ai sensi del D.lgs 81/2008 e s.m..
+Settore Lavori pubblici e manutenzione della città;Attività connesse al ruolo di Datore di lavoro ai sensi del D.lgs.n.81/2008 e ss.mm.ii.
 Settore Pianificazione e sostenibilità urbana;Responsabilità del procedimento e coordinamento esterno al settore delle attività finalizzate all’elaborazione del nuovo piano urbanistico della città.
 Settore Pianificazione e sostenibilità urbana;Coordinamento e responsabilità dei provvedimenti e degli atti di pianificazione urbanistica.
 Settore Pianificazione e sostenibilità urbana;Coordinamento e responsabilità degli Accordi Territoriali e degli Accordi di Programma in variante ai piani urbanistici.
@@ -429,7 +429,7 @@ Direzione Generale;Supporto alla Giunta nella programmazione strategica dell'ent
 Direzione Generale;Sovrintendenza alla gestione dell’ente, perseguendo livelli ottimali di efficacia e di efficienza.
 Direzione Generale;Direzione del processo di pianificazione e controllo direzionale dell’ente.
 Direzione Generale;Presidio e coordinamento dell’assetto direzionale dell’Ente e relativi adempimenti.
-Direzione Generale;Presidio della organizzazione dell’ente , definizione di percorsi di adeguamento della struttura organizzativa ed introduzione di meccanismi di coordinamento intersettoriale.
+Direzione Generale;Presidio della organizzazione dell’ente, definizione di percorsi di adeguamento della struttura organizzativa ed introduzione di meccanismi di coordinamento intersettoriale.
 Direzione Generale;Presidio dei procedimenti amministrativi dell’Ente.
 Direzione Generale;Presidio dei sistemi di valutazione dell’Ente
 Direzione Generale;Presidio del sistema qualità complessivo dell’Ente.
@@ -437,15 +437,18 @@ Direzione Generale;Presidio dei processi di sviluppo formativo e di benessere or
 Direzione Generale;Presidio del programma “Città universitaria”.
 Direzione Generale;Presidio dei procedimenti di nomina/designazione dei rappresentanti dell’Ente.
 Direzione Generale;Presidio delle funzioni relative alle politiche europee e alle relazioni internazionali.
-Direzione Generale;Coordinamento gestionale delle attività amministrative del Gabinetto del Sindaco, della Segreteria del Sindaco e dell’Ufficio Stampa (tali unità rispondono direttamente al Sindaco e fanno riferimento al Direttore Generale sul piano del coordinamento gestionale).
-Direzione Generale;Elaborazione di piani di valenza di Ente con coordinamento ed apporto dei settori.
+Direzione Generale;Coordinamento gestionale delle attività amministrative del Gabinetto del Sindaco, della Segreteria del Sindaco e dell’Ufficio Stampa.
+Direzione Generale;Elaborazione di piani di valenza di Ente con coordinamento ed apporto dei Settori.
 Direzione Generale;Presidio e monitoraggio di progetti complessi, speciali e trasversali
 Direzione Generale;Promozione e coordinamento di processi di innovazione.
 Direzione Generale;Presidio delle relazioni sindacali.
-Direzione Generale;Definizione delle politiche di gestione delle risorse umane e finanziarie, di concerto con i settori competenti.
-Direzione Generale;Sovrintendenza sul Piano delle Opere e sul Piano degli Investimenti con il supporto dei settori competenti.
-Direzione Generale;Presidio della logistica, con il supporto dei settori competenti.
+Direzione Generale;Definizione delle politiche di gestione delle risorse umane e finanziarie, di concerto con i Settori competenti.
+Direzione Generale;Sovrintendenza sul Piano delle Opere e sul Piano degli Investimenti con il supporto dei Settori competenti.
+Direzione Generale;Presidio della logistica, con il supporto dei Settori competenti.
 Direzione Generale;Proposta ed attuazione di azioni di valorizzazione patrimoniale ed accordi di programma.
+Direzione Generale;Supporto al Sindaco nella definizione e gestione delle relazioni istituzionali, anche in relazione agli strumenti partenariali in materia di sicurezza urbana e nelle funzioni afferenti alle politiche di sicurezza dell'ente.
+Direzione Generale;Presidio e coordinamento generale dei progetti finanziati nell’ambito del
+Direzione Generale;“Piano nazionale di ripresa e resilienza” e della relativa Cabina di regia.
 Ufficio stampa;Programmazione e gestione dei rapporti dell'Ente con gli organi di informazione.
 Ufficio stampa;Pianificazione, redazione e cura editoriale del mensile Modena Comune.
 Ufficio stampa;Responsabile: Roberto Righetti
