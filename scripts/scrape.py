@@ -148,6 +148,7 @@ events.replace(to_replace=[r"\\t|\\n|\\r", "\t|\n|\r"], value=["",""], regex=Tru
 events.to_csv("docs/eventi/eventi_modena.csv",sep=";",index=False)
 
 events.to_csv("docs/eventi/eventi_modena.tsv",sep="\t",index=False,line_terminator="\r\n")
+events.to_csv("docs/eventi/eventi_modena_pipe.csv",sep="|",index=False,line_terminator="\r\n")
 
 geo_events = gpd.GeoDataFrame(
     events, geometry=gpd.points_from_xy(events['longitudine'], events['latitudine']))
