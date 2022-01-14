@@ -5,7 +5,14 @@ import geopandas as gpd
 from datetime import date
 from zipfile import ZipFile
 import numpy as np
+import json
 import os
+
+def save_json(data, out):
+    """save json to a file"""
+    with open(out, 'w') as outfile:
+        json.dump(data, outfile)
+
 headers = {'Accept': 'application/json', 'Content-Type': 'application/json'}
 
 today = date.today()
@@ -26,7 +33,7 @@ r = requests.post(url, headers=headers,json={"b_size":10000,"fullobjects":1,"que
 #r.encoding = 'ISO 8859-1'
 r.encoding = 'utf-8'
 data_scraped = r.json()
-
+save_json(data_scraped,"docs/eventi/eventi_modena.json")
 events = pd.DataFrame(data_scraped['items'])
 
 # categoria_evento => è una lista
