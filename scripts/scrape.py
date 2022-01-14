@@ -7,7 +7,7 @@ from zipfile import ZipFile
 import numpy as np
 import json
 import os
-
+import re
 def save_json(data, out):
     """save json to a file"""
     with open(out, 'w') as outfile:
@@ -103,6 +103,7 @@ def desc(value):
     except KeyError:
         pass
     desc = desc.replace(";"," ")
+    desc = re.sub(r'((\b\w+\b.{1,2}\w+\b)+).+\1', r'\1', desc, flags = re.I)
     return desc
 
 # events['desc_estesa'] = events['desc_estesa'].apply(lambda x: desc(x))
