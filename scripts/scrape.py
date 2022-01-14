@@ -96,10 +96,7 @@ def desc(value):
                 bk= value['blocks'][k]
                 for b in bk['text']['blocks']:
                     ndesc = b['text']
-                    if (desc == "" and ndesc != ""):
-                        desc = desc + " " + ndesc
-                    elif (ndesc != desc):
-                        desc = desc + " "+ ndesc
+                    desc = ndesc + " " + desc #+ " "+ ndesc
     except KeyError:
         pass
     desc = desc.replace(";"," ")
