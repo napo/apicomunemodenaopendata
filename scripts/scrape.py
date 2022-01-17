@@ -67,8 +67,7 @@ events= events.rename(columns={'title':'nome',"street":"via","zip_code":"cap","m
 events= events.rename(columns={'city':'città',"street":"via","description":"descrizione","created":"data_creazione","end":"fine","start":"inizio"})
 events= events.rename(columns={'image':'immagine','whole_day':'giornata_intera'})
 events= events.rename(columns={'ulteriori_informazioni':'extrainfo'})
-#events=events.rename(columns={'organizzato_da_esterno':'org_esterna'})
-#events=events.rename(columns={"descrizione_estesa":"desc_estesa"})
+
 
 events['latitudine']= events.geolocation.apply(lambda x:  x['latitude'] if(x != None) else x)
 events['longitudine']= events.geolocation.apply(lambda x:  x['longitude'] if(x != None) else x)
@@ -103,15 +102,18 @@ def desc(value):
     desc = re.sub(r'((\b\w+\b.{1,2}\w+\b)+).+\1', r'\1', desc, flags = re.I)
     return desc
 
-# events['desc_estesa'] = events['desc_estesa'].apply(lambda x: desc(x))
+def removetxtduplicate(text):
+    if text is not None:
+        text = re.sub(r'((\b\w+\b.{1,2}\w+\b)+).+\1', r'\1', text, flags = re.I)
+    return(text)
+
 events['extrainfo'] = events['extrainfo'].apply(lambda x: desc(x))
 events['immagine'] = events['immagine'].apply(lambda x: x['download'])
 events.rename(columns={'image_caption':'desc_img'},inplace=True)  
 events.rename(columns={'effective':'data_pubblicazione'},inplace=True)     
 events['prezzo'] = events['prezzo'].apply(lambda x: desc(x)) 
 events['orari'] = events['orari'].apply(lambda x: desc(x))
-# events['org_esterna'] = events['org_esterna'].apply(lambda x: desc(x))
-# events.desc_estesa = events.desc_estesa.apply(lambda x: x.lstrip("\n"))
+
 
 events.web = events.web.apply(lambda x: "" if (str(x) == "[]") else x)
 events.web = events.web.apply(lambda x: "" if (x == None) else x)
@@ -124,21 +126,10 @@ events['descrizione'] = events.descrizione.str.lstrip(" ")
 events['descrizione'] = events.descrizione.str.lstrip(" ")
 events['descrizione'] = events.descrizione.str.replace("“","").replace("”","")
 
-#events["desc_estesa"] = events['desc_estesa'].str.replace("\n\n","\n").replace(";"," ")
-#events["desc_estesa"] = events['desc_estesa'].str.lstrip(" ")  
-#events["desc_estesa"] = events['desc_estesa'].str.lstrip(" \n ")  
-#events["desc_estesa"] = events['desc_estesa'].str.lstrip(" ")
-#events["desc_estesa"] = events['desc_estesa'].str.replace("\n"," ").replace("\t"," ")
-#events['desc_estesa'] = events.desc_estesa.str.replace("“","").replace("”","")
-
 events["orari"] = events['orari'].str.lstrip(" ")
 events["orari"] = events['orari'].str.lstrip("\n").replace(";"," ").replace("\n"," ").replace("\t"," ").replace("\r","")
 events['orari'] = events.orari.str.replace("“","").replace("”","")
 
-#events["org_esterna"] = events['org_esterna'].str.lstrip(" ").replace(";"," ").replace("\n"," ").replace("\t",).replace("\r","")
-#events["org_esterna"] = events['org_esterna'].str.lstrip("\n")
-#events["org_esterna"] = events['org_esterna'].replace("\n"," ")
-#events['org_esterna'] = events.org_esterna.str.replace("“","").replace("”","")
 
 events["prezzo"] = events['prezzo'].str.lstrip(" ").replace(";"," ")
 events["prezzo"] = events['prezzo'].str.lstrip("\n").replace("\n"," ").replace("\t"," ").replace("\r"," ")
@@ -146,15 +137,32 @@ events['prezzo'] = events.prezzo.str.replace("“","").replace("”","")
 
 events.replace(to_replace=[r"\\t|\\n|\\r", "\t|\n|\r"], value=["",""], regex=True, inplace=True)
 
-events.to_csv("docs/eventi/eventi_modena.csv",sep=";",index=False)
+events["extrainfo"] = events['extrainfo'].apply(lambda x: removetxtduplicate(x))
+events["prezzo"] = events['prezzo'].apply(lambda x: removetxtduplicate(x))
+events["descrizione"] = events['descrizione'].apply(lambda x: removetxtduplicate(x))
+events["categoria_evento"] = events['categoria_evento'].apply(lambda x: removetxtduplicate(x))
+events["città"] = events['città'].apply(lambda x: removetxtduplicate(x))
+events["data_creazione"] = events['data_creazione'].apply(lambda x: removetxtduplicate(x))
+events["data_pubblicazione"] = events['data_pubblicazione'].apply(lambda x: removetxtduplicate(x))
+events["email"] = events['email'].apply(lambda x: removetxtduplicate(x))
+events["desc_img"] = events['desc_img'].apply(lambda x: removetxtduplicate(x))
+events["data_ultima_modifica"] = events['data_ultima_modifica'].apply(lambda x: removetxtduplicate(x))
+events["nome_sede"] = events['nome_sede'].apply(lambda x: removetxtduplicate(x))
+events["orari"] = events['orari'].apply(lambda x: removetxtduplicate(x))
+events["prezzo"] = events['prezzo'].apply(lambda x: removetxtduplicate(x))
+events["reperibilita"] = events['reperibilita'].apply(lambda x: removetxtduplicate(x))
+events["telefono"] = events['telefono'].apply(lambda x: removetxtduplicate(x))
+events["nome"] = events['nome'].apply(lambda x: removetxtduplicate(x))
+events["web"] = events['web'].apply(lambda x: removetxtduplicate(x))
+events["cap"] = events['cap'].apply(lambda x: removetxtduplicate(x))
 
+events.to_csv("docs/eventi/eventi_modena.csv",sep=";",index=False)
 events.to_csv("docs/eventi/eventi_modena.tsv",sep="\t",index=False,line_terminator="\r\n")
 events.to_csv("docs/eventi/eventi_modena_pipe.csv",sep="|",index=False,line_terminator="\r\n")
 
 geo_events = gpd.GeoDataFrame(
     events, geometry=gpd.points_from_xy(events['longitudine'], events['latitudine']))
 
-#geo_events.to_csv("geo_eventi_modena.csv",sep=";",index=False,encoding="utf-8")
 
 geo_events.set_crs(4326,inplace=True)
 os.chdir("docs/eventi")
@@ -174,6 +182,7 @@ events.to_csv("eventi_modena_coordinate_con_virgola.csv",sep=";",index=False)
 events.to_excel("eventi_modena.xlsx",index=False, sheet_name="eventi")
 
 os.chdir("../..")
+
 
 servizi = "https://www.comune.modena.it/api/@search?portal_type=UnitaOrganizzativa&path.query=/amministrazione/aree-amministrative&path.depth=2&fullobjects=1&b_size=10000"
 r = requests.get(servizi, headers=headers)
