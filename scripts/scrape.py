@@ -26,7 +26,7 @@ subdata_2 = {"i":"start","o":"plone.app.querystring.operation.date.largerThan","
 d = [subdata,subdata_2]
 data={'fullobjects': '1',"query":d}
 
-r = requests.post(url, headers=headers,json={"b_size":10000,"fullobjects":1,"query":[{"i":"portal_type","o":"plone.app.querystring.operation.selection.any","v":["Event"]},{"i":"start","o":"plone.app.querystring.operation.date.largerThan","v":"2019-01-01 00:00"}]})
+r = requests.post(url, headers=headers,json={"b_size":10000,"fullobjects":1,"query":[{"i":"portal_type","o":"plone.app.querystring.operation.selection.any","v":["Event"]},{"i":"start","o":"plone.app.querystring.operation.date.largerThan","v":today_str}]})
 
 #r = requests.post(url, headers=headers,json=data)})
 
