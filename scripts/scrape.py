@@ -190,9 +190,19 @@ def desc(value):
 
 # In[56]:
 
+def immagineDownload(row):
+    download = ""
+    try:
+        download = row['download']
+    except Exception as e:
+        print (e)
+        pass
+    return(download)
+        
 
 eventi['extrainfo'] = eventi['extrainfo'].apply(lambda x: desc(x))
-eventi['immagine'] = eventi['immagine'].apply(lambda x: x['download'])
+#eventi['immagine'] = eventi['immagine'].apply(lambda x: x['download'])
+eventi['immagine'] = eventi['immagine'].apply(lambda x: immagineDownload(x))
 eventi.rename(columns={'image_caption': 'desc_img'}, inplace=True)
 eventi.rename(columns={'effective': 'data_pubblicazione'}, inplace=True)
 eventi['prezzo'] = eventi['prezzo'].apply(lambda x: desc(x))
